@@ -4,8 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { socketUpdateSession } from '../features/sessions/sessionSlice';
 import { useNavigate } from 'react-router-dom';
 import io from 'socket.io-client';
-
-const BACKEND_URL = import.meta.env.VITE_API_URL.replace('/api', ''); 
+import { SOCKET_URL } from '../config.js';
 
 const useSocket = () => {
   const dispatch = useDispatch();
@@ -16,7 +15,7 @@ const useSocket = () => {
   useEffect(() => {
     if (user && user._id) {
       
-      const socket = io(BACKEND_URL, {
+      const socket = io(SOCKET_URL, {
         query: { userId: user._id },
         transports: ['websocket'],
       });

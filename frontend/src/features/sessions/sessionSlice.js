@@ -1,8 +1,9 @@
 // frontend/src/features/sessions/sessionSlice.js
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
 import axios from 'axios'
+import { API_BASE_URL } from '../../config.js'
 
-const API_URL = `${import.meta.env.VITE_API_URL}/sessions/`;
+const API_URL = `${API_BASE_URL}/sessions/`;
 
 const api = axios.create({ baseURL: API_URL })
 api.interceptors.request.use((request) => {

@@ -7,6 +7,9 @@ import connectDB from "./config/db.js";
 import userRoutes from "./routes/userRoutes.js";
 import sessionRoutes from "./routes/sessionRoutes.js";
 import { notFound, errorHandler } from "./middleware/errorMiddleware.js";
+import dns from 'dns';
+
+dns.setServers(["1.1.1.1","8.8.8.8"]);
 
 dotenv.config();
 
@@ -17,6 +20,7 @@ const app = express();
 const server = http.createServer(app);
 
 const allowedOrigin = [
+    'https://d3wmwcf5-5000.inc1.devtunnels.ms',
     'http://localhost:5174',
     'http://localhost:5173',
 ]
